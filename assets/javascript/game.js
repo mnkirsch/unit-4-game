@@ -1,5 +1,5 @@
 window.onload = function() {
-    var goalNumber = Math.floor(Math.random() * 101 + 19);
+    var random = Math.floor(Math.random() * 101 + 19);
 
     var number1 = Math.floor(Math.random() * 11 + 1);
     var number2 = Math.floor(Math.random() * 11 + 1);
@@ -10,17 +10,18 @@ window.onload = function() {
     var wins = 0;
     var losses = 0;
 
-
+    
     $("#numberWins").html(wins);
     $("#numberLosses").html(losses);
+    $(".goalNumber").text("Number To Get: " + random)
 
     $("#one").on("click", function() {
         myTotal = myTotal + number1;
         $("#finalTotal").html(myTotal);
 
-        if (myTotal === Random) {
+        if (myTotal === random) {
             winner();
-        } else {
+        } else if (myTotal > random) {
             loser();
         }
     })
@@ -55,6 +56,7 @@ window.onload = function() {
             winner();
         } else {
             loser();
+            reset();
         }
     })
 
@@ -74,7 +76,7 @@ window.onload = function() {
 
     function reset() {
         Random = Math.floor(Math.random() * 101 + 19);
-        $("#randomNumber").html(Random);
+        $(".goalNumber").text("Number To Get: " + random);
         var number1 = Math.floor(Math.random() * 11 + 1);
         var number2 = Math.floor(Math.random() * 11 + 1);
         var number3 = Math.floor(Math.random() * 11 + 1);
@@ -82,4 +84,5 @@ window.onload = function() {
         myTotal = 0;
         $("#finalTotal").html(myTotal);
     }
+
 }
